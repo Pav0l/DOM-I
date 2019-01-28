@@ -67,7 +67,6 @@ navFull.appendChild(lastAnchor);
 
 // Popupate cta section
 let ctaH1 = queSel('h1');
-// how do you add <br> inside h1?
 ctaH1.textContent = siteContent.cta.h1;
 
 let ctaImg = queSel('#cta-img');
