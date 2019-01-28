@@ -48,8 +48,22 @@ const queSelAll = selector => document.querySelectorAll(selector);
 let navFull = queSel('nav');
 const navArr = Array.from(navFull.children);  //create an array from HTML Collection
 for (let i = 0; i < navArr.length; i++) {  // assign text content in each anchor tag from JSON
-  navArr[i].textContent = siteContent.nav[`nav-item-${i}`];
+  navArr[i].textContent = siteContent.nav[`nav-item-${i+1}`];
+  navArr[i].style = 'color: green';
 }
+
+// Steps of creating new element and shoving it into the DOM
+const newAnchor = document.createElement('a');
+newAnchor.innerText = 'DOM Mania';
+newAnchor.href = '#';
+newAnchor.style = 'color: indigo';
+navFull.prepend(newAnchor);
+
+const lastAnchor = document.createElement('a');
+lastAnchor.innerText = 'Last DOM';
+lastAnchor.href = '#';
+lastAnchor.style = 'color: crimson';
+navFull.appendChild(lastAnchor);
 
 // Popupate cta section
 let ctaH1 = queSel('h1');
@@ -126,4 +140,3 @@ contactParaThree.textContent = siteContentContact.email;
 let footerSec = queSel('footer p');
 footerSec.textContent = siteContent.footer.copyright;
 
-console.log(contactH4);
