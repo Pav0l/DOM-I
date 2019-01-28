@@ -51,6 +51,7 @@ for (let i = 0; i < navArr.length; i++) {  // assign text content in each anchor
   navArr[i].textContent = siteContent.nav[`nav-item-${i}`];
 }
 
+// Popupate cta section
 let ctaH1 = queSel('h1');
 // how do you add <br> inside h1?
 ctaH1.textContent = siteContent.cta.h1;
@@ -61,28 +62,68 @@ ctaImg.setAttribute('src', siteContent.cta["img-src"]);
 let ctaBtn = queSel('button');
 ctaBtn.textContent = siteContent.cta.button;
 
-
+// Popupate main content
+// top-content
 let topDiv = queSel('.main-content .top-content');
 let firstElKids = topDiv.firstElementChild.children;
 let lastElKids = topDiv.lastElementChild.children;
+const siteContentMain = siteContent["main-content"];
 
 let topFirstDivHeading = firstElKids[0];
-topFirstDivHeading.textContent = siteContent["main-content"]["features-h4"];
+topFirstDivHeading.textContent = siteContentMain["features-h4"];
 
 let topFirstDivPara = firstElKids[1];
-topFirstDivPara.textContent = siteContent["main-content"]["features-content"];
+topFirstDivPara.textContent = siteContentMain["features-content"];
 
 let topLastDivHeading = lastElKids[0];
-topLastDivHeading.textContent = siteContent["main-content"]["about-h4"];
+topLastDivHeading.textContent = siteContentMain["about-h4"];
 
 let topLastDivPara = lastElKids[1];
-topLastDivPara.textContent = siteContent["main-content"]["about-content"];
+topLastDivPara.textContent = siteContentMain["about-content"];
 
+// main-img
+let mainImg = queSel('#middle-img');
+mainImg.setAttribute('src', siteContentMain["middle-img-src"]);
 
+// bot-content
+let botDiv = queSel('.main-content .bottom-content');
+let frstElKids = botDiv.firstElementChild.children;
+let midElKids = botDiv.children[1].children;
+let lstElKids = botDiv.lastElementChild.children;
 
+let botFirstDivHeading = frstElKids[0];
+botFirstDivHeading.textContent = siteContentMain["services-h4"];
 
+let botFirstDivPara = frstElKids[1];
+botFirstDivPara.textContent = siteContentMain["services-content"];
 
+let botMidDivHeading = midElKids[0];
+botMidDivHeading.textContent = siteContentMain["product-h4"];
 
+let botMidDivPara = midElKids[1];
+botMidDivPara.textContent = siteContentMain["product-content"];
 
+let botLastDivHeading = lstElKids[0];
+botLastDivHeading.textContent = siteContentMain["vision-h4"];
 
-console.log(topFirstDivHeading);
+let botLastDivPara = lstElKids[1];
+botLastDivPara.textContent = siteContentMain["vision-content"];
+
+// contact section
+let contactSec = queSel('.contact');
+const siteContentContact = siteContent.contact;
+let contactH4 = contactSec.firstElementChild;
+let contactParaOne = contactSec.children[1];
+let contactParaTwo = contactSec.children[2];
+let contactParaThree = contactSec.children[3];
+
+contactH4.textContent = siteContentContact["contact-h4"];
+contactParaOne.textContent = siteContentContact.address;  // how to add <br> ?
+contactParaTwo.textContent = siteContentContact.phone;
+contactParaThree.textContent = siteContentContact.email;
+
+// footer section
+let footerSec = queSel('footer p');
+footerSec.textContent = siteContent.footer.copyright;
+
+console.log(contactH4);
