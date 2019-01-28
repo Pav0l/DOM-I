@@ -40,3 +40,49 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+const queSel = selector => document.querySelector(selector);
+const queSelAll = selector => document.querySelectorAll(selector);
+
+// Populate navbar anchor tags
+let navFull = queSel('nav');
+const navArr = Array.from(navFull.children);  //create an array from HTML Collection
+for (let i = 0; i < navArr.length; i++) {  // assign text content in each anchor tag from JSON
+  navArr[i].textContent = siteContent.nav[`nav-item-${i}`];
+}
+
+let ctaH1 = queSel('h1');
+// how do you add <br> inside h1?
+ctaH1.textContent = siteContent.cta.h1;
+
+let ctaImg = queSel('#cta-img');
+ctaImg.setAttribute('src', siteContent.cta["img-src"]);
+
+let ctaBtn = queSel('button');
+ctaBtn.textContent = siteContent.cta.button;
+
+
+let topDiv = queSel('.main-content .top-content');
+let firstElKids = topDiv.firstElementChild.children;
+let lastElKids = topDiv.lastElementChild.children;
+
+let topFirstDivHeading = firstElKids[0];
+topFirstDivHeading.textContent = siteContent["main-content"]["features-h4"];
+
+let topFirstDivPara = firstElKids[1];
+topFirstDivPara.textContent = siteContent["main-content"]["features-content"];
+
+let topLastDivHeading = lastElKids[0];
+topLastDivHeading.textContent = siteContent["main-content"]["about-h4"];
+
+let topLastDivPara = lastElKids[1];
+topLastDivPara.textContent = siteContent["main-content"]["about-content"];
+
+
+
+
+
+
+
+
+console.log(topFirstDivHeading);
