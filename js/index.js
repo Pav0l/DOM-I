@@ -40,3 +40,102 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+const queSel = selector => document.querySelector(selector);
+const queSelAll = selector => document.querySelectorAll(selector);
+
+// Populate navbar anchor tags
+let navFull = queSel('nav');
+const navArr = Array.from(navFull.children);  //create an array from HTML Collection
+for (let i = 0; i < navArr.length; i++) {  // assign text content in each anchor tag from JSON
+  navArr[i].textContent = siteContent.nav[`nav-item-${i+1}`];
+  navArr[i].style = 'color: green';
+}
+
+// Steps of creating new element and shoving it into the DOM
+const newAnchor = document.createElement('a');
+newAnchor.innerText = 'DOM Mania';
+newAnchor.href = '#';
+newAnchor.style = 'color: indigo';
+navFull.prepend(newAnchor);
+
+const lastAnchor = document.createElement('a');
+lastAnchor.innerText = 'Last DOM';
+lastAnchor.href = '#';
+lastAnchor.style = 'color: crimson';
+navFull.appendChild(lastAnchor);
+
+// Popupate cta section
+let ctaH1 = queSel('h1');
+ctaH1.textContent = siteContent.cta.h1;
+
+let ctaImg = queSel('#cta-img');
+ctaImg.setAttribute('src', siteContent.cta["img-src"]);
+
+let ctaBtn = queSel('button');
+ctaBtn.textContent = siteContent.cta.button;
+
+// Popupate main content
+// top-content
+let topDiv = queSel('.main-content .top-content');
+let firstElKids = topDiv.firstElementChild.children;
+let lastElKids = topDiv.lastElementChild.children;
+const siteContentMain = siteContent["main-content"];
+
+let topFirstDivHeading = firstElKids[0];
+topFirstDivHeading.textContent = siteContentMain["features-h4"];
+
+let topFirstDivPara = firstElKids[1];
+topFirstDivPara.textContent = siteContentMain["features-content"];
+
+let topLastDivHeading = lastElKids[0];
+topLastDivHeading.textContent = siteContentMain["about-h4"];
+
+let topLastDivPara = lastElKids[1];
+topLastDivPara.textContent = siteContentMain["about-content"];
+
+// main-img
+let mainImg = queSel('#middle-img');
+mainImg.setAttribute('src', siteContentMain["middle-img-src"]);
+
+// bot-content
+let botDiv = queSel('.main-content .bottom-content');
+let frstElKids = botDiv.firstElementChild.children;
+let midElKids = botDiv.children[1].children;
+let lstElKids = botDiv.lastElementChild.children;
+
+let botFirstDivHeading = frstElKids[0];
+botFirstDivHeading.textContent = siteContentMain["services-h4"];
+
+let botFirstDivPara = frstElKids[1];
+botFirstDivPara.textContent = siteContentMain["services-content"];
+
+let botMidDivHeading = midElKids[0];
+botMidDivHeading.textContent = siteContentMain["product-h4"];
+
+let botMidDivPara = midElKids[1];
+botMidDivPara.textContent = siteContentMain["product-content"];
+
+let botLastDivHeading = lstElKids[0];
+botLastDivHeading.textContent = siteContentMain["vision-h4"];
+
+let botLastDivPara = lstElKids[1];
+botLastDivPara.textContent = siteContentMain["vision-content"];
+
+// contact section
+let contactSec = queSel('.contact');
+const siteContentContact = siteContent.contact;
+let contactH4 = contactSec.firstElementChild;
+let contactParaOne = contactSec.children[1];
+let contactParaTwo = contactSec.children[2];
+let contactParaThree = contactSec.children[3];
+
+contactH4.textContent = siteContentContact["contact-h4"];
+contactParaOne.textContent = siteContentContact.address;  // how to add <br> ?
+contactParaTwo.textContent = siteContentContact.phone;
+contactParaThree.textContent = siteContentContact.email;
+
+// footer section
+let footerSec = queSel('footer p');
+footerSec.textContent = siteContent.footer.copyright;
+
